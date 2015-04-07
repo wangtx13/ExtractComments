@@ -7,13 +7,10 @@
 package extractcomments;
 
 import java.io.File;
-import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -55,7 +52,7 @@ public class Main {
         File inputRootFile = new File("/Users/apple/NetBeansProjects/ExtractComments/sourceCode");
         ArrayList<String> path = new ArrayList<>();
         if(!inputRootFile.isDirectory()) {
-            System.out.println("Please input a directory.");
+            System.out.println("Please input a extisted directory.");
         } else {
             TraversalFiles.fileList(inputRootFile, 0, path, folderPath);
         }
