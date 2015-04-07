@@ -1,0 +1,45 @@
+ * @(#)ToolBarButtonFactory.java  1.2  2006-07-16
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * ToolBarButtonFactory.
+ * @author Werner Randelshofer
+ * @version 1.2 2006-07-16 Split some methods up for better reuse. 
+ * <br>1.1 2006-03-27 Font exclusion list updated.
+ * <br>1.0 13. Februar 2006 Created.
+ 
+ Prevent instance creation. 
+ separator
+ separator
+ Selection tool
+     * Method addSelectionToolTo must have been invoked prior to this on the
+     * JToolBar.
+     *
+     
+ String constants are interned
+zoomPopupButton.setPreferredSize(new Dimension(16,16));
+ String constants are interned
+zoomPopupButton.setPreferredSize(new Dimension(16,16));
+     * Creates toolbar buttons and adds them to the specified JToolBar
+     
+     * @param colorMap a Map with named colors. This is usually a LinkedHashMap
+     * so that the colors are in a specific order.
+     
+strokeDashesPopupButton.setColumnCount(2, false);
+ Mac OS X 10.3 Font Exclusion List
+ Windows XP Professional Font Exclusion List
+submenu.setFont(JPopupButton.ITEM_FONT);
+item.setFont(JPopupButton.itemFont);
+     * Creates toolbar buttons and adds them to the specified JToolBar
+     
+     * Creates toolbar buttons and adds them to the specified JToolBar
+     
+     * Creates toolbar buttons and adds them to the specified JToolBar
+     
+ String constants are interned

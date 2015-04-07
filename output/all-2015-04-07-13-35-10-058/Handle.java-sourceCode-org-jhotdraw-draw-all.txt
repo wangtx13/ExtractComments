@@ -1,0 +1,70 @@
+ * @(#)Handle.java  2.0  2006-01-14
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * Handles are used to change a figure by direct manipulation.
+ * Handles know their owning figure and they provide methods to
+ * locate the handle on the figure and to track changes.
+ * <p>
+ * Handles are used for user interaction. Unlike figures, a handle works with
+ * the user interface coordinates of the DrawingView. The user interface
+ * coordinates are expressed in integer pixels.
+ * @author Werner Randelshofer
+ * @version 2.0 2006-01-14 Changed to support double precision coordinates.
+ * <br>1.0 2003-12-01 Derived from JHotDraw 5.4b1.
+ 
+     * Returns the owner of this handle.
+     
+     * Sets the view of the handle.
+     
+     * Adds a listener for this handle.
+     
+     * Removes a listener for this handle.
+     
+     * Returns the bounding box of the handle.
+     
+     * Returns the draw bounds of the handle.
+     
+     * Tests if a point is contained in the handle.
+     
+     * Draws this handle.
+     
+     * Invalidates the handle. This method informs its listeners
+     * that its current display box is invalid and should be
+     * refreshed.
+     
+     * Disposes the resources aquired by the handler.
+     
+     * Returns a cursor for the handle.
+     
+     * Returns true, if this handle is combinable with the specified handle.
+     * This method is used to determine, if multiple handles need to be tracked,
+     * when more than one figure is selected.
+     
+     * Tracks the start of the interaction. The default implementation
+     * does nothing.
+     *  @param anchor the position where the interaction started
+     
+     * Tracks a step of the interaction.
+     *  @param anchor the position where the interaction started
+     * @param lead the current position
+     
+     * Tracks the end of the interaction.
+     *  @param anchor the position where the interaction started
+     * @param lead the current position
+     
+     * Tracks a double click.
+     
+     * This method is invoked by the drawing view, when its transform
+     * has changed. This means, that DrawingView.viewToDrawing and
+     * DrawingView.drawingToView will return different values than they
+     * did before.
+     
+     * Creates secondary handles.
+     

@@ -1,0 +1,29 @@
+ * @(#)BoxHandleKit.java  2.0  2006-01-14
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+�
+ 
+ * A set of utility methods to create Handles for the common
+ * locations on a figure's display box.
+ * @author Werner Randelshofer
+ * @version 2.0 2006-01-14 Changed to support double precision coordinates.
+ * <br>1.0 2003-12-01 Derived from JHotDraw 5.4b1.
+ 
+ Creates a new instance. 
+     * Creates handles for each lead of a
+     * figure and adds them to the provided collection.
+     
+     * Fills the given Vector with handles at each
+     * the north, south, east, and west of the figure.
+     
+     * Fills the given Vector with handles at each
+     * the north, south, east, and west of the figure.
+     
+         * FIXME - Replace operation parameters by a Rectangle2D.Double.
+         

@@ -1,0 +1,55 @@
+ * @(#)TextTool.java  1.0  19. November 2003
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+�
+ 
+ * Tool to create new or edit existing text figures.
+ * The editing behavior is implemented by overlaying the
+ * Figure providing the text with a FloatingTextField.<p>
+ * A tool interaction is done once a Figure that is not
+ * a TextHolder is clicked.
+ * @see TextHolder
+ * @see FloatingTextField
+ * @author Werner Randelshofer
+ * @version 2.0 2006-01-14 Changed to support double precison coordinates.
+ * <br>1.0 2003-12-01 Derived from JHotDraw 5.4b1.
+ 
+ Creates a new instance. 
+ Creates a new instance. 
+     * If the pressed figure is a TextHolder it can be edited otherwise
+     * a new text figure is created.
+     
+ update view so the created figure is drawn before the floating text
+ figure is overlaid. (Note, fDamage should be null in StandardDrawingView
+ when the overlay figure is drawn because a JTextField cannot be scrolled)
+view().checkDamage();
+        Rectangle box = getView().drawingToView(figure.getBounds());
+        int nChars = figure.getTextColumns();
+        Dimension d = textField.getPreferredSize(nChars);
+        d.width = Math.max(box.width, d.width);
+        return new Rectangle(box.x - 6, box.y - 4, d.width, d.height);
+         
+Dimension d = textField.getPreferredSize(3);
+d.width = Math.max(box.width, d.width);
+        if (createdFigure != null) {
+            Rectangle bounds = createdFigure.getBounds();
+            if (bounds.width == 0 && bounds.height == 0) {
+                getDrawing().remove(createdFigure);
+            } else {
+                getView().addToSelection(createdFigure);
+            }
+            createdFigure = null;
+            getDrawing().fireUndoableEditHappened(creationEdit);
+            fireToolDone();
+        }
+typingTarget.willChange();
+ nothing to undo
+	            setUndoActivity(null);
+typingTarget.changed();
+	        view().checkDamage();

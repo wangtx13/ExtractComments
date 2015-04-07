@@ -1,0 +1,135 @@
+ * @(#)AbstractFigure.java   3.3  2006-06-17
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * AbstractFigure provides the functionality for managing listeners
+ * for a Figure.
+ * @author Werner Randelshofer
+ * @version 3.3 Reworked.
+ * <br>3.2 2006-01-05 Added method getChangingDepth().
+ * <br>3.0 2006-01-20 Reworked for J2SE 1.5.
+ * <br>1.0 2003-12-01 Derived from JHotDraw 5.4b1.
+ 
+     * We increase this number on each invocation of willChange() and
+     * decrease it on each invocation of changed().
+     
+ Creates a new instance. 
+ DRAWING
+ SHAPE AND BOUNDS
+ ATTRIBUTES
+ EDITING
+ CONNECTING
+ COMPOSITE FIGURES
+ CLONING
+ EVENT HANDLING
+     *  Notify all listenerList that have registered interest for
+     * notification on this event type.
+     
+     *  Notify all listenerList that have registered interest for
+     * notification on this event type.
+     
+ Notify all listeners that have registered interest for
+ Guaranteed to return a non-null array
+ Process the listeners last to first, notifying
+ those that are interested in this event
+ Lazily create the event:
+     *  Notify all listenerList that have registered interest for
+     * notification on this event type.
+     
+ Notify all listeners that have registered interest for
+ Guaranteed to return a non-null array
+ Process the listeners last to first, notifying
+ those that are interested in this event
+ Lazily create the event:
+     *  Notify all listenerList that have registered interest for
+     * notification on this event type.
+     
+ Notify all listeners that have registered interest for
+ Guaranteed to return a non-null array
+ Process the listeners last to first, notifying
+ those that are interested in this event
+ Lazily create the event:
+     *  Notify all listenerList that have registered interest for
+     * notification on this event type.
+     
+ Notify all listeners that have registered interest for
+ Guaranteed to return a non-null array
+ Process the listeners last to first, notifying
+ those that are interested in this event
+ Lazily create the event:
+     *  Notify all listenerList that have registered interest for
+     * notification on this event type.
+     
+ Notify all listeners that have registered interest for
+ Guaranteed to return a non-null array
+ Process the listeners last to first, notifying
+ those that are interested in this event
+ Lazily create the event:
+ Notify all listeners that have registered interest for
+ Guaranteed to return a non-null array
+ Process the listeners last to first, notifying
+ those that are interested in this event
+ Lazily create the event:
+     *  Notify all listenerList that have registered interest for
+     * notification on this event type.
+     
+ Notify all listeners that have registered interest for
+ Guaranteed to return a non-null array
+ Process the listeners last to first, notifying
+ those that are interested in this event
+ Lazily create the event:
+     *  Notify all listenerList that have registered interest for
+     * notification on this event type.
+     
+ Notify all listeners that have registered interest for
+ Guaranteed to return a non-null array
+ Process the listeners last to first, notifying
+ those that are interested in this event
+    public Set createHandles() {
+        return new HashSet();
+    }
+     
+ XXX - Delete me
+     * Checks if this figure can be connected. By default
+     * AbstractFigures can be connected.
+     
+     * Informs that a figure needs to be redrawn.
+     
+     * Informs that a figure is about to change something that
+     * affects the contents of its display box.
+     
+     * Informs that a figure changed the area of its display box.
+     
+     * Transforms the geometry of the figure.
+     
+     * Moves the figure. This is the
+     * method that subclasses override.
+     * <p>
+     * This is a basic operation for which no events are fired.
+     
+     * Returns the Figures connector for the specified location.
+     * By default a ChopBoxConnector is returned.
+     * 
+     * 
+     * @see ChopBoxConnector
+     
+     * Returns a collection of actions which are presented to the user
+     * in a popup menu.
+     * <p>The collection may contain null entries. These entries are used
+     * interpreted as separators in the popup menu.
+     
+     * Returns a specialized tool for the given coordinate.
+     * <p>Returns null, if no specialized tool is available.
+     
+     * Handles a mouse click.
+     
+    public Rectangle2D.Double getHitBounds() {
+        return getBounds();
+    }
+     

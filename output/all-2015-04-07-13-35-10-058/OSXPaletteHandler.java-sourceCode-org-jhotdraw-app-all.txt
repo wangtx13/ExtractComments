@@ -1,0 +1,25 @@
+ * @(#)FloatingPaletteHandler.java  1.1  2006-06-11
+ * Copyright (c) 2005-2006 Werner Randelshofer
+ * Staldenmattweg 2, Immensee, CH-6405, Switzerland.
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * Werner Randelshofer. ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Werner Randelshofer.
+ 
+ * Hides all registered floating palettes, if none of the registered project
+ * windows has focus anymore.
+ * @author Werner Randelshofer
+ * @version 1.1 2006-06-11 Palettes can now be any subclass of java.awt.Window.
+ * <br>1.0 October 9, 2005 Created.
+ 
+         * Invoked when the Window is set to be the focused Window, which means
+         * that the Window, or one of its subcomponents, will receive keyboard
+         * events.
+         
+         * Invoked when the Window is no longer the focused Window, which means
+         * that keyboard events will no longer be delivered to the Window or any of
+         * its subcomponents.
+         
+ Creates a new instance. 

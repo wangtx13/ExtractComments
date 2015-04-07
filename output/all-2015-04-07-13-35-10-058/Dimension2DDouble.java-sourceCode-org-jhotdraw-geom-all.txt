@@ -1,0 +1,94 @@
+ * @(#)Dimension2DDouble.java  1.0  January 14, 2006
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * Dimension2DDouble.
+ * @author  Werner Randelshofer
+ * @version 1.0 January 14, 2006 Created.
+ 
+     * The width dimension; negative values can be used. 
+     *
+     * @serial
+     * @see #getSize
+     * @see #setSize
+     
+     * The height dimension; negative values can be used. 
+     *
+     * @serial
+     * @see #getSize
+     * @see #setSize
+     
+ 
+     * Creates an instance of <code>Dimension2DDouble</code> with a width 
+     * of zero and a height of zero. 
+     
+ 
+     * Creates an instance of <code>Dimension2DDouble</code> whose width  
+     * and height are the same as for the specified dimension. 
+     *
+     * @param    d   the specified dimension for the 
+     *               <code>width</code> and 
+     *               <code>height</code> values
+     
+ 
+     * Constructs a <code>Dimension2DDouble</code> and initializes
+     * it to the specified width and specified height.
+     *
+     * @param width the specified width 
+     * @param height the specified height
+     
+     * Returns the width of this dimension in double precision.
+     * @return the width of this dimension in double precision
+     
+     * Returns the height of this dimension in double precision.
+     * @return the height of this dimension in double precision
+     
+     * Sets the size of this <code>Dimension2DDouble</code> object to
+     * the specified width and height in double precision.
+     * Note that if <code>width</code> or <code>height</code>
+     * are larger than <code>Integer.MAX_VALUE</code>, they will
+     * be reset to <code>Integer.MAX_VALUE</code>.
+     *
+     * @param width  the new width for the <code>Dimension2DDouble</code> object
+     * @param height the new height for the <code>Dimension2DDouble</code> object
+     
+     * Gets the size of this <code>Dimension2DDouble</code> object.
+     * This method is included for completeness, to parallel the
+     * <code>getSize</code> method defined by <code>Component</code>.
+     *
+     * @return   the size of this dimension, a new instance of 
+     *           <code>Dimension2DDouble</code> with the same width and height
+     * @see      Dimension2DDouble#setSize
+     * @see      java.awt.Component#getSize
+     * @since    JDK1.1
+     
+     * Sets the size of this <code>Dimension2DDouble</code> object to the specified size.
+     * This method is included for completeness, to parallel the
+     * <code>setSize</code> method defined by <code>Component</code>.
+     * @param    d  the new size for this <code>Dimension2DDouble</code> object
+     * @see      Dimension2DDouble#getSize
+     * @see      java.awt.Component#setSize
+     * @since    JDK1.1
+     
+     * Checks whether two dimension objects have equal values.
+     
+     * Returns the hash code for this <code>Dimension2DDouble</code>.
+     *
+     * @return    a hash code for this <code>Dimension2DDouble</code>
+     
+     * Returns a string representation of the values of this 
+     * <code>Dimension2DDouble</code> object's <code>height</code> and 
+     * <code>width</code> fields. This method is intended to be used only 
+     * for debugging purposes, and the content and format of the returned 
+     * string may vary between implementations. The returned string may be 
+     * empty but may not be <code>null</code>.
+     * 
+     * @return  a string representation of this <code>Dimension2DDouble</code> 
+     *          object
+     

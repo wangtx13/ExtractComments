@@ -1,0 +1,51 @@
+ * @(#)AttributedFigure.java  3.1  2006-06-17
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * A figure that can keep track of an open ended set of attributes.
+ * <p>
+ * FIXME - Move all convenience attribute getter methods into AttributeKeys
+ * @author Werner Randelshofer
+ * @version 3.1 2006-06-17 Method chop(Point2D.Double) added.
+ * <br>3.0 2006-06-07 Reworked.
+ * <br>2.1 2006-02-20 Support for DoubleStroke added.
+ * <br>2.0 2006-01-14 Changed to support double precision coordinates.
+ * <br>1.0 2003-12-01 Derived from JHotDraw 5.4b1.
+ 
+     * Forbidden attributes can't be set by the setAttribute() operation.
+     * They can only be changed by basicSetAttribute().
+     
+ Creates a new instance. 
+     * Sets an attribute of the figure.
+     * AttributeKey name and semantics are defined by the class implementing
+     * the figure interface.
+     
+     * Sets an attribute of the figure.
+     * AttributeKey name and semantics are defined by the class implementing
+     * the figure interface.
+     
+     * Gets an attribute from the figure.
+     
+     * This method is called by method draw() to draw the fill
+     * area of the figure. AttributedFigure configures the Graphics2D
+     * object with the FILL_COLOR attribute before calling this method.
+     * If the FILL_COLOR attribute is null, this method is not called.
+     
+     * This method is called by method draw() to draw the lines of the figure
+     *. AttributedFigure configures the Graphics2D object with
+     * the STROKE_COLOR attribute before calling this method.
+     * If the STROKE_COLOR attribute is null, this method is not called.
+     
+     * This method is called by method draw() to draw the text of the figure
+     *. AttributedFigure configures the Graphics2D object with
+     * the TEXT_COLOR attribute before calling this method.
+     * If the TEXT_COLOR attribute is null, this method is not called.
+     
+     * Applies all attributes of this figure to that figure.
+     

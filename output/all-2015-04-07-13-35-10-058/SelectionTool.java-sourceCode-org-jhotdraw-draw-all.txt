@@ -1,0 +1,31 @@
+ * @(#)SelectionTool.java  1.0  2003-12-01
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+�
+ 
+ * Tool to select and manipulate figures.
+ * A selection tool is in one of three states, e.g., background
+ * selection, figure selection, handle manipulation. The different
+ * states are handled by different tracker objects.
+ * @author Werner Randelshofer
+ * @version 1.0 2003-12-01 Derived from JHotDraw 5.4b1.
+ 
+     * The tracker encapsulates the current state of the SelectionTool.
+     
+ Creates a new instance. 
+     * Factory method to create a Handle tracker. It is used to track a handle.
+     
+     * Factory method to create a Drag tracker. It is used to drag a figure.
+     
+     * Factory method to create an area tracker. It is used to select an
+     * area.
+     
+ Empty
+     * Sent when an area of the drawing view needs to be repainted.
+     

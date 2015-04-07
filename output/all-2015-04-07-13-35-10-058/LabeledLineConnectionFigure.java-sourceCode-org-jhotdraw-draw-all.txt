@@ -1,0 +1,86 @@
+ * @(#)LabeledLineConnection.java  1.1  2006-02-14
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * A LineConnection with labels.
+ * @author Werner Randelshofer
+ * @version 1.1 2006-02-14 Do not include labels in logical bounds.
+ * <br>1.0 23. Januar 2006 Created.
+ 
+private Rectangle2D.Double bounds;
+     * Handles figure changes in the children.
+     
+ Creates a new instance. 
+ DRAWING
+     * Draw the figure. This method is delegated to the encapsulated presentation figure.
+     
+ SHAPE AND BOUNDS
+     * Transforms the figure.
+     
+        if (bounds == null) {
+            bounds = super.getBounds();
+            for (Figure child : getChildrenFrontToBack()) {
+                if (child.isVisible()) {
+                    bounds.add(child.getBounds());
+                }
+            }
+        }
+        return (Rectangle2D.Double) bounds.clone();
+         
+bounds = null;
+ ATTRIBUTES
+     * Sets an attribute of the figure.
+     * AttributeKey name and semantics are defined by the class implementing
+     * the figure interface.
+     
+ EDITING
+ CONNECTING
+ COMPOSITE FIGURES
+     * Returns an iterator to iterate in
+     * Z-order front to back over the children.
+     
+ LAYOUT
+     * Get a Layouter object which encapsulated a layout
+     * algorithm for this figure. Typically, a Layouter
+     * accesses the child components of this figure and arranges
+     * their graphical presentation.
+     *
+     *
+     * @return layout strategy used by this figure
+     
+     * A layout algorithm is used to define how the child components
+     * should be laid out in relation to each other. The task for
+     * layouting the child components for presentation is delegated
+     * to a Layouter which can be plugged in at runtime.
+     
+ EVENT HANDLING
+     * Informs that a figure changed the area of its display box.
+     * /
+     * public void changed() {
+     * if (isChangingCount == 1) {
+     * super.changed();
+     * layout();
+     * fireFigureChanged(getDrawBounds());
+     * } else {
+     * invalidateBounds();
+     * }
+     * isChangingCount--;
+     * }
+     * Informs that a figure changed the area of its display box.
+     * /
+     * public void changed() {
+     * // FIXME - May break super implementation
+     * if (isChangingCount == 1) {
+     * layout();
+     * fireFigureChanged(getDrawBounds());
+     * } else {
+     * invalidateBounds();
+     * }
+     * isChangingCount--;
+     * }

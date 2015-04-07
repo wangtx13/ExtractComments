@@ -1,0 +1,58 @@
+ * @(#)AbstractConnector.java  2.1  2006-06-05
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+�
+ 
+ * AbstractConnector provides default implementation for
+ * the Connector interface.
+ * @see Connector
+ * @author Werner Randelshofer
+ * @version 2.1 2006-06-05 Support connection to decorator.
+ * <br>2.0 2006-01-14 Changed to support doubl precision coordinates.
+ * <br>1.0 2003-12-01 Derived from JHotDraw 5.4b1.
+ 
+     * The owner of the connector
+     
+     * Whether we should connect to the figure or to its decorator.
+     
+     * Whether we are visible.
+     
+     * Whether the state of this connector is persistent.
+     * Set this to true only, when the user interface allows to change the
+     * state of the connector.
+     
+     * Constructs a connector that has no owner. It is only
+     * used internally to resurrect a connectors from a
+     * StorableOutput. It should never be called directly.
+     
+     * Constructs a connector with the given owner figure.
+     
+     * Tests if a point is contained in the connector.
+     
+     * Draws this connector. By default connectors are invisible.
+     
+     * Gets the connection point. Override when the connector
+     * does not need to distinguish between the start and end
+     * point of a connection.
+     
+     * Gets the connector's owner.
+     
+     * Sets the connector's owner.
+     
+error.initCause(e); <- requires JDK 1.4
+     * This is called, when the start location of the connection has been
+     * moved by the user. The user has this probably done, to adjust the layout.
+     * The connector may use this as a hint to improve the results for the next
+     * call to findEnd.
+     
+     * This is called, when the end location of the connection has been
+     * moved by the user. The user has this probably done, to adjust the layout.
+     * The connector may use this as a hint to improve the results for the next
+     * call to findStart.
+     

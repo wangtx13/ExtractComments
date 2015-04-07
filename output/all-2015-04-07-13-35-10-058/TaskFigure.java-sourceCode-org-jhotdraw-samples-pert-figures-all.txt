@@ -1,0 +1,40 @@
+ * @(#)TaskFigure.java  1.0  18. Juni 2006
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * TaskFigure.
+ * @author Werner Randelshofer.
+ * @version 1.0 18. Juni 2006 Created.
+ 
+     * Derived attribute. We cache it here for efficiency reasons.
+     
+     * This adapter is used, to connect a TextFigure with the name of
+     * the TaskFigure model.
+     
+ We could fire a property change event here, in case
+ some other object would like to observe us.
+target.firePropertyChange("name", e.getOldValue(), e.getNewValue());
+ We could fire a property change event here, in case
+ some other object would like to observe us.
+target.firePropertyChange("duration", e.getOldValue(), e.getNewValue());
+ Creates a new instance. 
+ The if-statement here guards against
+ cyclic task dependencies. 
+     * Returns dependent PertTasks which are directly connected via a
+     * PertDependency to this TaskFigure.
+     
+     * Returns predecessor PertTasks which are directly connected via a
+     * PertDependency to this TaskFigure.
+     
+     * Returns true, if the current task is a direct or
+     * indirect dependent of the specified task.
+     * If the dependency is cyclic, then this method returns true
+     * if <code>this</code> is passed as a parameter and for every other
+     * task in the cycle.
+     

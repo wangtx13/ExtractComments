@@ -1,0 +1,31 @@
+ * @(#)ExtensionFileFilter.java  1.2  2006-05-19
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * Filters files by their extensions.
+ * @author Werner Randelshofer
+ * @version 1.2 2006-05-19 Method append extension added.
+ * <br>1.1 2006-04-11 Method getExtensions added.
+ * <br>1.0 7. April 2006 Created.
+ 
+     * Creates a new instance.
+     * @param description A human readable description.
+     * @param extension The filename extension. This will be converted to
+     * lower-case by this method.
+     
+     * Creates a new instance.
+     * @param description A human readable description.
+     * @param extensions The filename extensions. These will be converted to
+     * lower-case by this method.
+     
+     * Returns an unmodifiable set with the filename extensions.
+     * All extensions are lower case.
+     
+     * Appends the extension to the filename, in case it is missing.
+     

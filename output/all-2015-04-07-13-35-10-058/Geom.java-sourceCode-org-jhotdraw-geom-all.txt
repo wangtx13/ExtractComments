@@ -1,0 +1,254 @@
+ * @(#)Geom.java  2.2  2006-07-04
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+�
+ 
+ * Some geometric utilities.
+ * @version 2.2 2006-07-04 Method grow(Rectangle2D.Double) added.
+ * <br>2.1 2006-01-20 Support for double precision coordinates enhanced.
+ 
+ never instantiated
+     * Tests if a point is on a line.
+     
+     * Tests if a point is on a line.
+     * <p>changed Werner Randelshofer 2003-11-26
+     
+     * Tests if a point is on a line.
+     * <p>changed Werner Randelshofer 2003-11-26
+     
+ The bitmask that indicates that a point lies above the rectangle. 
+ The bitmask that indicates that a point lies below the rectangle. 
+ The bitmask that indicates that a point lies to the left of the rectangle. 
+ The bitmask that indicates that a point lies to the right of the rectangle. 
+     * Returns the direction OUT_TOP, OUT_BOTTOM, OUT_LEFT, OUT_RIGHT from
+     * one point to another one.
+     
+     * Returns the direction OUT_TOP, OUT_BOTTOM, OUT_LEFT, OUT_RIGHT from
+     * one point to another one.
+     
+     * This method computes a binary OR of the appropriate mask values
+     * indicating, for each side of Rectangle r1, whether or not the
+     * Rectangle r2 is on the same side of the edge as the rest
+     * of this Rectangle.
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     * @return the logical OR of all appropriate out codes OUT_RIGHT, OUT_LEFT, OUT_BOTTOM,
+     * OUT_TOP.
+     
+     * This method computes a binary OR of the appropriate mask values
+     * indicating, for each side of Rectangle r1, whether or not the
+     * Rectangle r2 is on the same side of the edge as the rest
+     * of this Rectangle.
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     * @return the logical OR of all appropriate out codes OUT_RIGHT, OUT_LEFT, OUT_BOTTOM,
+     * OUT_TOP.
+     
+     * Returns a point on the edge of the bezier path which crosses the line
+     * from the center of the bezier path to the specified point.
+     * If no edge crosses the line, the nearest C0 control point is returned.
+     
+ Chopped point
+ Try for points along edge
+        if (isClosed() && size() > 1) {
+            Node first = get(0);
+            Node last = get(size() - 1);
+            Point2D.Double chop = Geom.intersect(
+                    first.x[0], first.y[0],
+                    last.x[0], last.y[0],
+                    p.x, p.y,
+                    ctr.x, ctr.y
+                    );
+            if (chop != null) {
+                double cl = Geom.length2(chop.x, chop.y, p.x, p.y);
+                if (cl < len) {
+                    len = cl;
+                    cx = chop.x;
+                    cy = chop.y;
+                }
+            }
+        }
+ if none found, pick closest vertex
+     * Constains a value to the given range.
+     * @return the constrained value
+     
+     * Constains a value to the given range.
+     * @return the constrained value
+     
+     * Gets the square distance between two points.
+     
+     * Gets the distance between to points
+     
+     * Gets the square distance between two points.
+     
+     * Gets the distance between to points
+     
+     * Gets the distance between to points
+     
+     * Caps the line defined by p1 and p2 by the number of units
+     * specified by radius.
+     * @return A new end point for the line.
+     
+     * Gets the angle of a point relative to a rectangle.
+     
+     * Gets the angle of a point relative to a rectangle.
+     
+     * Gets the angle of the specified line.
+     
+     * Gets the point on a rectangle that corresponds to the given angle.
+     
+     * Gets the point on a rectangle that corresponds to the given angle.
+     
+     * Converts a polar to a point
+     
+     * Converts a polar to a point
+     
+     * Gets the point on an oval that corresponds to the given angle.
+     
+     * Gets the point on an oval that corresponds to the given angle.
+     
+     * Standard line intersection algorithm
+     * Return the point of intersection if it exists, else null
+     *
+ from Doug Lea's PolygonFigure
+ line 1 point 1 x
+ line 1 point 1 y
+ line 1 point 2 x
+ line 1 point 2 y
+ line 2 point 1 x
+ line 2 point 1 y
+ line 2 point 2 x
+ line 2 point 2 y
+ source: http://vision.dai.ed.ac.uk/andrewfg/c-g-a-faq.html
+ eq: for lines AB and CD
+     (YA-YC)(XD-XC)-(XA-XC)(YD-YC)
+ r = -----------------------------  (eqn 1)
+     (XB-XA)(YD-YC)-(YB-YA)(XD-XC)
+     (YA-YC)(XB-XA)-(XA-XC)(YB-YA)
+ s = -----------------------------  (eqn 2)
+     (XB-XA)(YD-YC)-(YB-YA)(XD-XC)
+  XI = XA + r(XB-XA)
+  YI = YA + r(YB-YA)
+ parallel
+ coincident; pick one end of first line
+     * Standard line intersection algorithm
+     * Return the point of intersection if it exists, else null
+     *
+ from Doug Lea's PolygonFigure
+ line 1 point 1 x
+ line 1 point 1 y
+ line 1 point 2 x
+ line 1 point 2 y
+ line 2 point 1 x
+ line 2 point 1 y
+ line 2 point 2 x
+ line 2 point 2 y
+ source: http://vision.dai.ed.ac.uk/andrewfg/c-g-a-faq.html
+ eq: for lines AB and CD
+     (YA-YC)(XD-XC)-(XA-XC)(YD-YC)
+ r = -----------------------------  (eqn 1)
+     (XB-XA)(YD-YC)-(YB-YA)(XD-XC)
+     (YA-YC)(XB-XA)-(XA-XC)(YB-YA)
+ s = -----------------------------  (eqn 2)
+     (XB-XA)(YD-YC)-(YB-YA)(XD-XC)
+  XI = XA + r(XB-XA)
+  YI = YA + r(YB-YA)
+ parallel
+ coincident; pick one end of first line
+ line 1 point 1 x
+ line 1 point 1 y
+ line 1 point 2 x
+ line 1 point 2 y
+ line 2 point 1 x
+ line 2 point 1 y
+ line 2 point 2 x
+ line 2 point 2 y
+ source: http://vision.dai.ed.ac.uk/andrewfg/c-g-a-faq.html
+ eq: for lines AB and CD
+     (YA-YC)(XD-XC)-(XA-XC)(YD-YC)
+ r = -----------------------------  (eqn 1)
+     (XB-XA)(YD-YC)-(YB-YA)(XD-XC)
+     (YA-YC)(XB-XA)-(XA-XC)(YB-YA)
+ s = -----------------------------  (eqn 2)
+     (XB-XA)(YD-YC)-(YB-YA)(XD-XC)
+  XI = XA + r(XB-XA)
+  YI = YA + r(YB-YA)
+ parallel
+ coincident; pick one end of first line
+     * compute distance of point from line segment, or
+     * Double.MAX_VALUE if perpendicular projection is outside segment; or
+     * If pts on line are same, return distance from point
+     *
+ from Doug Lea's PolygonFigure
+ source:http://vision.dai.ed.ac.uk/andrewfg/c-g-a-faq.html#q7
+Let the point be C (XC,YC) and the line be AB (XA,YA) to (XB,YB).
+The length of the
+      line segment AB is L:
+                    ___________________
+                   |        2         2
+              L = \| (XB-XA) + (YB-YA)
+and
+                  (YA-YC)(YA-YB)-(XA-XC)(XB-XA)
+              r = -----------------------------
+                              L**2
+                  (YA-YC)(XB-XA)-(XA-XC)(YB-YA)
+              s = -----------------------------
+                              L**2
+      Let I be the point of perpendicular projection of C onto AB, the
+              XI=XA+r(XB-XA)
+              YI=YA+r(YB-YA)
+      Distance from A to I = r*L
+      Distance from C to I = s*L
+      If r < 0 I is on backward extension of AB
+      If r>1 I is on ahead extension of AB
+      If 0<=r<=1 I is on AB
+      If s < 0 C is left of AB (you can just check the numerator)
+      If s>0 C is right of AB
+      If s=0 C is on AB
+                        for directional version, instead use
+                        double snum =  (ya-yc) * (xb-xa) - (xa-xc) * (yb-ya);
+                        double s = snum / l2;
+                 
+                        double l = Math.sqrt((double)l2);
+                        return = s * l;
+                 
+     * Resizes the <code>Rectangle2D.Double</code> both horizontally and vertically.
+     * <p>
+     * This method modifies the <code>Rectangle2D.Double</code> so that it is
+     * <code>h</code> units larger on both the left and right side,
+     * and <code>v</code> units larger at both the top and bottom.
+     * <p>
+     * The new <code>Rectangle2D.Double</code> has (<code>x&nbsp;-&nbsp;h</code>,
+     * <code>y&nbsp;-&nbsp;v</code>) as its top-left corner, a
+     * width of
+     * <code>width</code>&nbsp;<code>+</code>&nbsp;<code>2h</code>,
+     * and a height of
+     * <code>height</code>&nbsp;<code>+</code>&nbsp;<code>2v</code>.
+     * <p>
+     * If negative values are supplied for <code>h</code> and
+     * <code>v</code>, the size of the <code>Rectangle2D.Double</code>
+     * decreases accordingly.
+     * The <code>grow</code> method does not check whether the resulting
+     * values of <code>width</code> and <code>height</code> are
+     * non-negative.
+     * @param h the horizontal expansion
+     * @param v the vertical expansion
+     

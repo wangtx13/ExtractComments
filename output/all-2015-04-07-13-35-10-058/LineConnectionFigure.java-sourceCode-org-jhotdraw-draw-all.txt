@@ -1,0 +1,131 @@
+ * @(#)BezierBezierLineConnection.java  1.0.1  2006-02-06
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * A LineConnection is a standard implementation of the
+ * ConnectionFigure interface. The interface is implemented with BezierFigure.
+ * @author Werner Randelshofer
+ * @version 1.0.1 2006-02-06 Fixed redo bug.
+ * <br>1.0 23. Januar 2006 Created.
+ 
+     * Handles figure changes in the start and the
+     * end figure.
+     
+ The commented lines below must stay commented out.
+ This is because, we must not set our connectors to null,
+ in order to support reconnection using redo.
+            if (evt.getFigure() == owner.getStartFigure()
+            || evt.getFigure() == owner.getEndFigure()) {
+                owner.setStartConnector(null);
+                owner.setEndConnector(null);
+            }
+ Creates a new instance. 
+ DRAWING
+ SHAPE AND BOUNDS
+     * Ensures that a connection is updated if the connection
+     * was moved.
+     
+ make sure that we are still connected
+ ATTRIBUTES
+ EDITING
+     * Gets the handles of the figure. It returns the normal
+     * PolylineHandles but adds ChangeConnectionHandles at the
+     * start and end.
+     
+ CONNECTING
+     * Tests whether a figure can be a connection target.
+     * ConnectionFigures cannot be connected and return false.
+     
+     * Note: this method is only final for testing purposes. You can
+     * remove the final keywoard at any time.
+     
+     * Note: this method is only final for testing purposes. You can
+     * remove the final keywoard at any time.
+     
+ COMPOSITE FIGURES
+ LAYOUT
+    public Liner getBezierPathLayouter() {
+        return (Liner) getAttribute(BEZIER_PATH_LAYOUTER);
+    }
+    public void setBezierPathLayouter(Liner newValue) {
+        setAttribute(BEZIER_PATH_LAYOUTER, newValue);
+    }
+    /*
+     * Lays out the connection. This is called when the connection
+     * itself changes. By default the connection is recalculated
+     * /
+    public void layoutConnection() {
+        if (getStartConnector() != null && getEndConnector() != null) {
+            willChange();
+            Liner bpl = getBezierPathLayouter();
+            if (bpl != null) {
+                bpl.lineout(this);
+            } else {
+                if (getStartConnector() != null) {
+                    Point2D.Double start = getStartConnector().findStart(this);
+                    if(start != null) {
+                        basicSetStartPoint(start);
+                    }
+                }
+                if (getEndConnector() != null) {
+                    Point2D.Double end = getEndConnector().findEnd(this);
+     
+                    if(end != null) {
+                        basicSetEndPoint(end);
+                    }
+                }
+            }
+            changed();
+        }
+    }
+     
+ CLONING
+ EVENT HANDLING
+        if (getStartConnector() != null && getEndConnector() != null) {
+            handleConnect(getStartFigure(), getEndFigure());
+        }
+        setStartConnector(null);
+        setEndConnector(null);
+        /*
+        if (getStartConnector() != null && getEndConnector() != null) {
+            handleDisconnect(getStartFigure(), getEndFigure());
+        }
+     * Handles the disconnection of a connection.
+     * Override this method to handle this event.
+     
+     * Handles the connection of a connection.
+     * Override this method to handle this event.
+     
+ That shares the same connectors that this object has.
+ To work properly, that must be registered as a figure listener
+ to the connected figures.
+     * Handles a mouse click.
+     
+ PERSISTENCE
+    public void basicSetPoint(int index, Point2D.Double p) {
+        if (index != 0 && index != getPointCount() - 1) {
+            if (getStartConnector() != null) {
+                Point2D.Double start = getStartConnector().findStart(this);
+                if(start != null) {
+                    basicSetStartPoint(start);
+                }
+            }
+            if (getEndConnector() != null) {
+                Point2D.Double end = getEndConnector().findEnd(this);
+     
+                if(end != null) {
+                    basicSetEndPoint(end);
+                }
+            }
+        }
+        super.basicSetPoint(index, p);
+    }
+     
+     * FIXME - Liner must work with API of LineConnection!
+     

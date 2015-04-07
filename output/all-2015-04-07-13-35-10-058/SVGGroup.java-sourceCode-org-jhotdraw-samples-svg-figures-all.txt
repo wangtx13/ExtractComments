@@ -1,0 +1,26 @@
+ * @(#)SVGGroup.java  1.0  July 8, 2006
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * SVGGroup.
+ * @author Werner Randelshofer
+ * @version 1.0 July 8, 2006 Created.
+ 
+ Creates a new instance. 
+ We ignore "pattern" elements for now.
+ We ignore "pattern" elements for now.
+ We ignore "defs" elements for now.
+ We ignore "use" elements for now.
+ We ignore "script" elements for now.
+ We ignore "filter" elements for now.
+ We ignore "title" elements for now.
+ We ignore "desc" elements for now.
+ We ignore "switch" elements for now.
+ We ignore "radialGradient" elements for now.
+ We ignore "linearGradient" elements for now.

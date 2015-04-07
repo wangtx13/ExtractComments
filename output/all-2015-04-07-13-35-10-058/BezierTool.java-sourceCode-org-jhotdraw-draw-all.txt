@@ -1,0 +1,38 @@
+ * @(#)BezierTool.java  1.1  2006-07-12
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * Tool to scribble a BezierFigure
+ * @author  Werner Randelshofer
+ * @version 1.1 2006-07-12 Extended support for subclassing.
+ * <br>1.0 2006-01-21 Created.
+ 
+     * The prototype for new figures.
+     
+     * The created figure.
+     
+ Creates a new instance. 
+ Creates a new instance. 
+    public void draw(Graphics2D g) {
+        if (createdFigure != null
+        && mouseLocation != null) {
+            Point2D.Double p = createdFigure.getEndPoint();
+            g.setColor(Color.black);
+            g.setStroke(new BasicStroke());
+            g.drawLine(p.x, p.y, mouseLocation.x, mouseLocation.y);
+        }
+     
+    }
+     
+ nothing to do
+ getView().addToSelection(createdFigure);
+                    getView().addToSelection(createdFigure);
+                     
+        if (createdFigure != null) {
+        }

@@ -1,0 +1,30 @@
+ * @(#)ChopDiamondConnector.java  1.0  27. M�rz 2006
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+�
+ 
+ * A ChopDiamondConnector locates connection points by choping the
+ * connection between the centers of the two figures at the edge of
+ * a diamond figure.
+ * @author Werner Randelshofer
+ * @version 1.0 27. M�rz 2006 Created.
+ 
+ only used for Storable implementation
+     * Return an appropriate connection point on the edge of a diamond figure
+     
+ FIXME - This code is wrong. Copy correct code from DiamondFigure.
+growy = getStrokeTotalWidth() * SQRT2;
+growx = growy = getStrokeTotalWidth() / 2d * SQRT2;
+ Center point
+ If overlapping, just return the opposite corners
+ Calculate angle to determine quadrant
+ Dermine line points
+ This will be returned
+ Get the intersection with edges
+ No proper edge found, we should send one of four corners

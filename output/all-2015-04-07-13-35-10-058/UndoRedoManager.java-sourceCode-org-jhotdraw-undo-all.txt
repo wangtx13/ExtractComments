@@ -1,0 +1,92 @@
+ * @(#)UndoRedoManager.java 1.3.1  2006-04-12
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * Same as javax.swing.UndoManager but provides actions for undo and
+ * redo operations.
+ * @author  Werner Randelshofer
+ * @version 1.3.1 2006-04-12 Method setLocale added.
+ * <br>1.3 2006-02-28 Support for PropertyChangeListener added.
+ * <br>1.2.2 2006-02-25 Configure actions from resource bundle.
+ * <br>1.2.1 2003-11-02 Adapted to changes in ResourceBundleUtil.
+ * <br>1.2 2003-03-16 Texts and accelerator keys are now read from a
+ * resource bundle.
+ * <br>1.1.2 2003-03-12 Actions use now KeyStroke objects instead of
+ * String objects as accelerator keys.
+ * <br>1.1.1 2002-05-10 Method addEdit is now smarter when
+ * determining whether an edit is significant.
+ * <br>1.1 2002-04-08 Method hasSignificantEdits/clearChanged added.
+ * <br>1.0 2001-10-09
+ 
+javax.swing.undo.UndoManager {
+     * The resource bundle used for internationalisation.
+     
+     * This flag is set to true when at
+     * least one significant UndoableEdit
+     * has been added to the manager since the
+     * last call to discardAllEdits.
+     
+     * This flag is set to true when an undo or redo
+     * operation is in progress. The UndoRedoManager
+     * ignores all incoming UndoableEdit events while
+     * this flag is true.
+     
+     * Sending this UndoableEdit event to the UndoRedoManager
+     * disables the Undo and Redo functions of the manager.
+     
+     * Undo Action for use in a menu bar.
+     
+         * Invoked when an action occurs.
+         
+     * Redo Action for use in a menu bar.
+     
+         * Invoked when an action occurs.
+         
+ The undo action instance. 
+ The redo action instance. 
+ Creates new UndoRedoManager 
+     * Discards all edits.
+     
+     * Returns true if at least one significant UndoableEdit
+     * has been added since the last call to discardAllEdits.
+     
+     * If inProgress, inserts anEdit at indexOfNextAdd, and removes
+     * any old edits that were at indexOfNextAdd or later. The die
+     * method is called on each edit that is removed is sent, in the
+     * reverse of the order the edits were added. Updates
+     * indexOfNextAdd.
+     *
+     * <p>If not inProgress, acts as a CompoundEdit</p>
+     *
+     * <p>Regardless of inProgress, if undoOrRedoInProgress,
+     * calls die on each edit that is sent.</p>
+     *
+     *
+     * @see CompoundEdit#end
+     * @see CompoundEdit#addEdit
+     
+     * Gets the undo action for use as an Undo menu item.
+     
+     * Gets the redo action for use as a Redo menu item.
+     
+     * Updates the properties of the UndoAction
+     * and of the RedoAction.
+     
+     * Undoes the last edit event.
+     * The UndoRedoManager ignores all incoming UndoableEdit events,
+     * while undo is in progress.
+     
+     * Redoes the last undone edit event.
+     * The UndoRedoManager ignores all incoming UndoableEdit events,
+     * while redo is in progress.
+     
+     * Undoes or redoes the last edit event.
+     * The UndoRedoManager ignores all incoming UndoableEdit events,
+     * while undo or redo is in progress.
+     

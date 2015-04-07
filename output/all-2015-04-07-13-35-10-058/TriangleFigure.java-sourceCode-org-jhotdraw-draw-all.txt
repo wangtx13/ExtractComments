@@ -1,0 +1,45 @@
+ * @(#)TriangleFigure.java  1.0  2006-03-27
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * A triangle with same dimensions as its enclosing rectangle,
+ * and apex at any of 8 places
+ * @author Werner Randelshofer
+ * @version 1.0 2006-03-27 Created.
+ 
+     * The bounds of the triangle figure.
+     
+ Creates a new instance. 
+        setFillColor(Color.white);
+        setStrokeColor(Color.black);
+         
+ DRAWING
+ SHAPE AND BOUNDS
+ ATTRIBUTES
+ EDITING
+ CONNECTING
+     * Returns the Figures connector for the specified location.
+     * By default a ChopDiamondConnector is returned.
+     * @see ChopDiamondConnector
+     
+    public Connector findConnector(Point2D.Double p, ConnectionFigure prototype) {
+        return new ChopTriangleConnector(this);
+    }
+        
+    public Connector findCompatibleConnector(Connector c, boolean isStart) {
+        return new ChopTriangleConnector(this);
+    }
+ COMPOSITE FIGURES
+ CLONING
+ EVENT HANDLING
+     * Checks if a Point2D.Double is inside the figure.
+     
+     * Moves the Figure to a new location.
+     * @param tx the transformation matrix.
+     

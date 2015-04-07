@@ -1,0 +1,187 @@
+ * @(#)BezierPath.java  1.1  2006-03-22
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * BezierPath allows the construction of paths consisting of straight lines,
+ * quadratic curves and cubic curves.
+ * <p>
+ * A BezierPath represents a geometric path constructed by vertices.
+ * Each Node has three control points: C0, C1, C2.
+ * A mask defines which control points are in use. The path passes through
+ * C0. C1 controls the curve going towards C0. C2 controls the curve going
+ * away from C0.
+ * @author Werner Randelshofer
+ * @version 1.1 2006-03-22 Methods moveTo, lineTo and quadTo  added.
+ * <br>1.0 January 20, 2006 Created.
+ 
+ Constant for control point C1.
+     * 
+ Constant for control point C2. 
+ Convenience constant for control point C1 and C2. 
+     * We cache a GeneralPath instance to speed up Shape operations.
+     
+     * We cache the index of the outermost node to speed up method indexOfOutermostNode(); 
+     
+     * If this value is set to true, closes the bezier path.
+     
+     * Defines a vertex (node) of the bezier path.
+     * <p>
+     * A vertex consists of three control points: C0, C1 and C2.
+     * <ul>
+     * <li>The bezier path always passes through C0.</li>
+     * <li>C1 is used to control the curve towards C0.
+     * </li>
+     * <li>C2 is used to control the curve going away from C0.</li>
+     * </ul>
+     
+         * This mask is used to describe which control points in addition to
+         * C0 are in effect.
+         
+ Control point x coordinates. 
+ Control point y coordinates. 
+ This is a hint for editing tools. If this is set to true,
+         * the editing tools shall keep all control points on the same
+         * line.
+         
+ Creates a new instance. 
+     * Convenience method for adding a control point with a single
+     * coordinate C0.
+     
+     * Convenience method for adding a control point with three
+     * coordinates C0, C1 and C2 with a mask.
+     
+     * Convenience method for changing a single coordinate of a control point.
+     
+     * Convenience method for getting a single coordinate of a control point.
+     
+     * This must be called after the BezierPath has been changed.
+     
+     * Recomputes the BezierPath, if it is invalid.
+     
+ Converts the BezierPath into a GeneralPath. 
+     * Returns true, if the outline of this bezier path contains the specified
+     * point.
+     *
+     * @param p The point to be tested.
+     * @param tolerance The tolerance for the test.
+     
+ Creates a deep copy of the BezierPath. 
+     * Transforms the BezierPath.
+     * @param tx the transformation.
+     
+     * Returns the point at the center of the bezier path.
+     
+     * Returns a point on the edge of the bezier path which crosses the line
+     * from the center of the bezier path to the specified point.
+     * If no edge crosses the line, the nearest C0 control point is returned.
+     
+        Point2D.Double ctr = getCenter();
+        
+        // Chopped point
+        double cx = -1;
+        double cy = -1;
+        double len = Double.MAX_VALUE;
+        
+        // Try for points along edge
+        validatePath();
+        PathIterator i = generalPath.getPathIterator(new AffineTransform(), 1);
+        double[] coords = new double[6];
+        int type = i.currentSegment(coords);
+        double prevX = coords[0];
+        double prevY = coords[1];
+        i.next();
+        for (; ! i.isDone(); i.next()) {
+            i.currentSegment(coords);
+            Point2D.Double chop = Geom.intersect(
+                    prevX, prevY,
+                    coords[0], coords[1],
+                    p.x, p.y,
+                    ctr.x, ctr.y
+                    );
+            
+            if (chop != null) {
+                double cl = Geom.length2(chop.x, chop.y, p.x, p.y);
+                if (cl < len) {
+                    len = cl;
+                    cx = chop.x;
+                    cy = chop.y;
+                }
+            }
+            
+            prevX = coords[0];
+            prevY = coords[1];
+        }
+        
+        //
+        if (isClosed() && size() > 1) {
+            Node first = get(0);
+            Node last = get(size() - 1);
+            Point2D.Double chop = Geom.intersect(
+                    first.x[0], first.y[0],
+                    last.x[0], last.y[0],
+                    p.x, p.y,
+                    ctr.x, ctr.y
+                    );
+            if (chop != null) {
+                double cl = Geom.length2(chop.x, chop.y, p.x, p.y);
+                if (cl < len) {
+                    len = cl;
+                    cx = chop.x;
+                    cy = chop.y;
+                }
+            }
+        }
+        
+        
+        // if none found, pick closest vertex
+        if (len == Double.MAX_VALUE) {
+            for (int j = 0, n = size(); j < n; j++) {
+                Node cp = get(j);
+                double l = Geom.length2(cp.x[0], cp.y[0], p.x, p.y);
+                if (l < len) {
+                    len = l;
+                    cx = cp.x[0];
+                    cy = cp.y[0];
+                }
+            }
+        }
+        return new Point2D.Double(cx, cy);
+         
+     * Return the index of the control point that is furthest from the center
+     *
+     * Returns a relative point on the path.
+     * Where 0 is the start point of the path and 1 is the end point of the
+     * path.
+     *
+     * @param relative a value between 0 and 1.
+     
+ Determine the length of the path
+ Compute the relative point on the path
+if (true) return new Point2D.Double(coords[0], coords[1]);
+ Compute the relative Point2D.Double on the line
+                return new Point2D.Double(
+                        prevX * pos / len + coords[0] * (pos + segLen) / len,
+                        prevY * pos / len + coords[1] * (pos + segLen) / len
+                        );
+     * Gets the segment of the polyline that is hit by
+     * the given Point2D.Double.
+     * @return the index of the segment or -1 if no segment was hit.
+     
+ XXX - This works only for straight lines!
+     * Joins two segments into one if the given Point2D.Double hits a node
+     * of the bezier path.
+     * @return the index of the joined segment or -1 if no segment was joined.
+     
+     * Splits the segment at the given Point2D.Double if a segment was hit.
+     * @return the index of the segment or -1 if no segment was hit.
+     
+ quadto
+ quadto
+ cubicto
+ lineto

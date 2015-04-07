@@ -1,0 +1,21 @@
+ * @(#)RotateHandle.java  1.0  12. July 2006
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * A Handle to rotate a Figure.
+ * @author Werner Randelshofer.
+ * @version 1.0 12. July 2006 Created.
+ 
+ Creates a new instance. 
+     * Draws this handle.
+     
+location =
+ This handle is placed above the figure.
+ We move it up by a handlesizes, so that it won't overlap with
+ the handles from BoxHandleKit.

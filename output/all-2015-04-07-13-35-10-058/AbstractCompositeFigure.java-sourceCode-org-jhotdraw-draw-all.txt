@@ -1,0 +1,87 @@
+ * @(#)AbstractCompositeFigure.java  2.2 2006-07-08
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ 
+ * A Figure that is composed of several children. A AbstractCompositeFigure
+ * doesn't define any layout behavior. It is up to subclassers to
+ * arrange the contained children.
+ * @author Werner Randelshofer
+ * @version 2.2 2006-07-08 Minor changes. 
+ * <br>2.1 2006-03-15 Fire undoable edit on attribute change.
+ * <br>2.0.1 2006-02-06 Fixed ConcurrentModificationException in method
+ * removeNotify.
+ * <br>2.0 2006-01-14 Changed to support double precision coordinates.
+ * <br>1.0 2003-12-01 Derived from JHotDraw 5.4b1.
+ 
+     * The children that this figure is composed of
+     *
+     * @see #add
+     * @see #removeChild
+     
+     * Cached draw bounds.
+     
+     * Cached layout bounds.
+     
+     * A Layouter determines how the AbstractCompositeFigure should
+     * be laid out graphically.
+     
+     * Handles figure changes in the children.
+     
+  owner.remove(evt.getFigure());
+ Creates a new instance. 
+else {
+            LinkedList<Handle> handles = new LinkedList<Handle>();
+            for (Figure child : children) {
+                handles.addAll(child.createHandles(detailLevel - 1));
+            }
+            return handles;
+        }
+ Copy children collection to avoid concurrent modification exception
+     * Removes all children.
+     *
+     * @see #add
+     
+     * Sends a figure to the back of the composite figure.
+     *
+     * @param figure that is part of this composite figure
+     
+     * Sends a figure to the front of the drawing.
+     *
+     * @param figure that is part of the drawing
+     
+     * Transforms the figure.
+     
+     * Returns an iterator to iterate in
+     * Z-order front to back over the children.
+     
+     * Get a Layouter object which encapsulated a layout
+     * algorithm for this figure. Typically, a Layouter
+     * accesses the child components of this figure and arranges
+     * their graphical presentation.
+     *
+     *
+     * @return layout strategy used by this figure
+     
+     * A layout algorithm is used to define how the child components
+     * should be laid out in relation to each other. The task for
+     * layouting the child components for presentation is delegated
+     * to a Layouter which can be plugged in at runtime.
+     
+     * Set a Layouter object which encapsulated a layout
+     * algorithm for this figure. Typically, a Layouter
+     * accesses the child components of this figure and arranges
+     * their graphical presentation. It is a good idea to set
+     * the Layouter in the protected initialize() method
+     * so it can be recreated if a GraphicalCompositeFigure is
+     * read and restored from a StorableInput stream.
+     *
+     *
+     * @param newLayouter	encapsulation of a layout algorithm.
+     
+ do nothing

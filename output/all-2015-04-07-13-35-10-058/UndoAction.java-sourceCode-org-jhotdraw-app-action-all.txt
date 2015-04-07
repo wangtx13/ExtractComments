@@ -1,0 +1,22 @@
+ * @(#)UndoAction.java  2.0  2006-06-15
+ * Copyright (c) 2005-2006 Werner Randelshofer
+ * Staldenmattweg 2, Immensee, CH-6405, Switzerland.
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * Werner Randelshofer. ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Werner Randelshofer.
+ 
+ * Undoes the last user action.
+ * In order to work, this action requires that the Project returns a project
+ * specific undo action when invoking getAction("undo") on the Project.
+ * @author Werner Randelshofer
+ * @version 2.0 2006-06-15 Reworked.
+ * <br>1.0 October 9, 2005 Created.
+ 
+ Creates a new instance. 
+     * Installs listeners on the project object.
+     
+     * Installs listeners on the project object.
+     

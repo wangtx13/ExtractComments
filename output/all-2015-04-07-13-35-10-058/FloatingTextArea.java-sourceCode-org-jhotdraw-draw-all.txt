@@ -1,0 +1,48 @@
+ *  @(#)FloatingTextArea.java 1.0.1 2006-02-27
+ * Copyright (c) 1996-2006 by the original authors of JHotDraw
+ * and all its contributors ("JHotDraw.org")
+ * All rights reserved.
+ * This software is the confidential and proprietary information of
+ * JHotDraw.org ("Confidential Information"). You shall not disclose
+ * such Confidential Information and shall use it only in accordance
+ * with the terms of the license agreement you entered into with
+ * JHotDraw.org.
+ * Project:		JHotdraw - a GUI framework for technical drawings
+ *				http://www.jhotdraw.org
+ *				http://jhotdraw.sourceforge.net
+ * Copyright:	� by the original author(s) and all contributors
+ * License:		Lesser GNU Public License (LGPL)
+ *				http://www.opensource.org/licenses/lgpl-license.html
+ 
+ * A FloatingTextArea overlays an editor on top of an area in a drawing.
+ 
+     * A scroll pane to allow for vertical scrolling while editing
+     
+     * The actual editor
+     
+     * The drawing view.
+     
+     * Constructor for the FloatingTextArea object
+     
+     * Creates the overlay within the given container.
+     * @param view the DrawingView
+     
+     * Creates the overlay for the given Container using a
+     * specific font.
+     * @param view the DrawingView
+     * @param figure the figure holding the text
+     
+ FIXME - Should scale with fractional value!
+     * Positions and sizes the overlay.
+     * @param r the bounding Rectangle2D.Double for the overlay
+     * @param text the text to edit
+     
+     * Gets the text contents of the overlay.
+     * @return The text value
+     
+     * Gets the preferred size of the overlay.
+     * @param cols Description of the Parameter
+     * @return The preferredSize value
+     
+     * Removes the overlay.
+     
