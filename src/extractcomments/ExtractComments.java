@@ -28,9 +28,6 @@ public class ExtractComments {
     public static void extractComments(File inputFile, File outputFile) {
         
         boolean commentsStart = false;
-        char currentChar = '$';
-        char lastChar = '$';
-        char lastLastChar = '$';
         StringBuffer outputStr = new StringBuffer();
         StringBuffer lastOutputStr = new StringBuffer();
         
@@ -45,89 +42,36 @@ public class ExtractComments {
                 
                 try(
                     InputStream in = new FileInputStream(inputFilePath);
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(in)); //prepare to read a file
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile)) //prepare to write a file
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))
                 ){
-                    //read a line from the file
+                    //read lines from the file
                     String lineString = null;
-                    lineString = reader.readLine();
-                    while(lineString != null) {
+                    while((lineString = reader.readLine()) != null) {
                         int strLength = lineString.length();
-                        if(strLength == 0) {
-                        }
-                        if(strLength == 1) {
-                            if(commentsStart) {
-                                currentChar = lineString.charAt(0);
+                        char currentChar = '$';
+                        char lastChar = '$';
+                        char lastLastChar = '$';
+                        for(int i = 0; i < strLength; ++i) {
+                            currentChar = lineString.charAt(i);
+                            
+                            if(currentChar == '*' && lastChar == '/' && !commentsStart) {
+                                commentsStart = true;
+                            } else if(currentChar == '/' && lastChar == '*' && lastLastChar != '/' && commentsStart) {
+                                outputStr.deleteCharAt(outputStr.length() - 1);
+                                commentsStart = false;
+                            } else if(currentChar == '/' && lastChar == '/' && lastLastChar != '*' && !commentsStart) {
+                                outputStr.append(lineString.substring(i + 1, strLength));
+                                i = strLength;
+                            } else if(commentsStart) {
                                 outputStr.append(currentChar);
                             }
-                        } else if(strLength == 2) {
-                            currentChar = lineString.charAt(1);
-                            lastChar = lineString.charAt(0);
-                            if(lastChar == '/' && currentChar == '*' ) {
-                                commentsStart = true;
-                            } else if(lastChar == '*' && currentChar == '/') {
-                                commentsStart = false;
-                            }
-                        } else {
-                            boolean doubleSlashStart = false;//Whether comments starting with "//"
-                            for(int i = 2; i < strLength; i ++) {
-                                //get current char, last char and the char before last char.
-                                currentChar = lineString.charAt(i);
-                                lastChar = lineString.charAt(i - 1);
-                                lastLastChar = lineString.charAt(i - 2);
-                                
-                                //If the multipul lines comments start, put the char into outputStr.
-                                if(commentsStart || doubleSlashStart) {
-                                    if(i == 2) {
-                                        outputStr.append(lastLastChar);
-                                        outputStr.append(lastChar);
-                                    }
-                                    outputStr.append(currentChar);
-                                }
-                                
-                                //special condition: comments start from the first char(lastLastChar),
-                                //including /*..., //..., */...
-                                if(i == 2 && lastLastChar == '/' && lastChar =='*') {
-                                    commentsStart = true;
-                                    outputStr.append(currentChar);
-                                }
-                                
-                                if(i == 2 && lastLastChar == '/' && lastChar =='/') {
-                                    doubleSlashStart =true;
-                                    outputStr.append(currentChar);
-                                }
-                                
-                                if(i == 2 && lastLastChar == '*' && lastChar =='/') {
-                                    commentsStart = false;
-                                    outputStr.delete(outputStr.length() - 3, outputStr.length());
-                                }
-                                
-                                //Check whether ".../*...*/" will start
-                                if(currentChar == '*' && lastChar == '/') {
-                                    commentsStart = true;
-                                }
-                                
-                                //Check whether ".../**...*/" will start
-                                if(currentChar == '*' && lastChar == '*' && lastLastChar == '/') {
-                                    commentsStart = true;
-                                    outputStr.deleteCharAt(outputStr.length() - 1);
-                                }
-                                
-                                //Check whether multipul lines comments will end with "...*/" except "/*/"
-                                //Delete last two chars if it ends.
-                                if(currentChar == '/' && lastChar =='*' && lastLastChar != '/') {
-                                    commentsStart = false;
-                                    outputStr.delete(outputStr.length() - 2, outputStr.length());
-                                }
-                                
-                                //Extract comments starting with "...//". Pay attention to condition "*//*".
-                                if(currentChar == '/' && lastChar == '/' && lastLastChar != '*') {
-                                    doubleSlashStart = true;
-                                }
-                                
-                                
-                            }
                             
+                            if(currentChar == '*' && lastChar == '*' && lastLastChar == '/') {
+                                outputStr.deleteCharAt(outputStr.length() - 1);
+                            } 
+                            lastLastChar = lastChar;
+                            lastChar = currentChar;
                         }
                         
                         //Whether the line includes comments
@@ -135,8 +79,6 @@ public class ExtractComments {
                             outputStr.append("\r\n");
                         }
                         lastOutputStr.replace(0, outputStr.length(), outputStr.toString());
-                        //read next line
-                        lineString = reader.readLine();
                     }
                     
                     writer.write(outputStr.toString());
