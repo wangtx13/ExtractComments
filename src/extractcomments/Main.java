@@ -49,7 +49,7 @@ public class Main {
         String folderPath = "/Users/apple/NetBeansProjects/ExtractComments/output/all-" + timeStampStr + "/";
         createDir(folderPath);
         
-        File inputRootFile = new File("/Users/apple/NetBeansProjects/ExtractComments/sourceCode");
+        File inputRootFile = new File("/Users/apple/NetBeansProjects/ExtractComments/srcTest");
         ArrayList<String> path = new ArrayList<>();
         if(!inputRootFile.isDirectory()) {
             System.out.println("Please input a extisted directory.");

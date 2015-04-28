@@ -61,7 +61,7 @@ public class TraversalFiles {
                         Logger.getLogger(TraversalFiles.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 } else {
-                   System.out.println();
+                   System.out.println(" isn't a java file.");
                 }
                 fileList(f, node, path, folderPath);
             }
