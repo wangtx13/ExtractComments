@@ -82,6 +82,7 @@ public class ExtractComments {
                     }
                     
                     writer.write(outputStr.toString());
+                    writer.flush();
                 } 
                 
             } catch (FileNotFoundException ex) {
