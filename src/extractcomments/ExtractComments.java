@@ -81,7 +81,7 @@ public class ExtractComments {
                         lastOutputStr.replace(0, outputStr.length(), outputStr.toString());
                     }
                     
-                    outputStr = ParseWords.splitAllCamelWords(outputStr);
+                    outputStr = ParseWords.parseAllWords(outputStr);
                     writer.write(outputStr.toString());
                     writer.flush();
                 } 
